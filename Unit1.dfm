@@ -4,7 +4,7 @@ object Form1: TForm1
   Caption = 'Grapher PL'
   ClientHeight = 435
   ClientWidth = 690
-  Color = clBlack
+  Color = clAqua
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
