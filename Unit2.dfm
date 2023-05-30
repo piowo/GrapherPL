@@ -13,6 +13,8 @@ object Form2: TForm2
   OldCreateOrder = False
   Position = poDesigned
   Visible = True
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object DriveComboBox1: TDriveComboBox

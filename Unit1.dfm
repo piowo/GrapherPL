@@ -51,7 +51,7 @@ object Form1: TForm1
         OnClick = PokaManagerObrazw2Click
       end
     end
-    object Plik2: TMenuItem
+    object Obraz1: TMenuItem
       Caption = 'Obraz'
       object Rozciagnij1: TMenuItem
         Caption = 'Rozci'#261'gnij'

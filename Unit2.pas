@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.FileCtrl, Vcl.StdCtrls,
   Vcl.Imaging.jpeg, Vcl.Imaging.GIFImg, Vcl.Imaging.GIFConsts,
-  Vcl.Imaging.pngimage, Vcl.Imaging.pnglang;
+  Vcl.Imaging.pngimage, Vcl.Imaging.pnglang, System.IniFiles;
 
 type
   TForm2 = class(TForm)
@@ -17,6 +17,8 @@ type
     Timer1: TTimer;
     procedure Timer1Timer(Sender: TObject);
     procedure FileListBox1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,6 +36,26 @@ uses Unit1;
 procedure TForm2.FileListBox1Click(Sender: TObject);
 begin
   Form1.Image1.Picture.LoadFromFile(FileListBox1.FileName);
+end;
+
+procedure TForm2.FormCreate(Sender: TObject);
+begin
+  try
+    INI := TINIFile.Create(CurDir+'\Settings.ini');
+    DirectoryListBox1.Directory := INI.ReadString('Path','Directory','C:\');
+  finally
+    FreeAndNil(INI);
+  end;
+end;
+
+procedure TForm2.FormDestroy(Sender: TObject);
+begin
+  try
+    INI := TINIFile.Create(CurDir+'\Settings.ini');
+    INI.WriteString('Path','Directory',DirectoryListBox1.Directory);
+  finally
+    FreeAndNil(INI);
+  end;
 end;
 
 procedure TForm2.Timer1Timer(Sender: TObject);

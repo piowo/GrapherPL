@@ -12,7 +12,7 @@ type
     MainMenu1: TMainMenu;
     PopupMenu1: TPopupMenu;
     Plik1: TMenuItem;
-    Plik2: TMenuItem;
+    Obraz1: TMenuItem;
     PokaManagerObrazw1: TMenuItem;
     PokaManagerObrazw2: TMenuItem;
     N1: TMenuItem;
@@ -64,7 +64,7 @@ begin
     Proporcja1.Checked := INI.ReadBool('Image1','Proportional',False);
     Wycentruj1.Checked := INI.ReadBool('Image1','Center',True);
   finally
-    INI.Free;
+    FreeAndNil(INI);
   end;
 
   Image1.Stretch := Rozciagnij1.Checked;
@@ -80,7 +80,7 @@ begin
     INI.WriteBool('Image1','Proportional',Proporcja1.Checked);
     INI.WriteBool('Image1','Center',Wycentruj1.Checked);
   finally
-    INI.Free;
+    FreeAndNil(INI);
   end;
 end;
 
@@ -153,7 +153,6 @@ begin
     if Form2.FileListBox1.ItemIndex < 0 then Form2.FileListBox1.ItemIndex := 0;
     Form2.FileListBox1.OnClick(Self);
   except
-
   end;
 end;
 
