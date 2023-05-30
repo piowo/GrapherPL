@@ -14,6 +14,8 @@ object Form1: TForm1
   OldCreateOrder = False
   Position = poDesigned
   Visible = True
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -46,18 +48,21 @@ object Form1: TForm1
     end
     object Plik2: TMenuItem
       Caption = 'Obraz'
-      object R1: TMenuItem
+      object Rozciagnij1: TMenuItem
         Caption = 'Rozci'#261'gnij'
         ShortCut = 16466
+        OnClick = Rozciagnij1Click
       end
       object Proporcja1: TMenuItem
         Caption = 'Proporcja'
         ShortCut = 16464
+        OnClick = Proporcja1Click
       end
-      object Proporcja2: TMenuItem
+      object Wycentruj1: TMenuItem
         Caption = 'Wycentruj'
         Checked = True
         ShortCut = 16451
+        OnClick = Wycentruj1Click
       end
     end
   end

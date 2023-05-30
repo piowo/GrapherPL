@@ -38,8 +38,8 @@ object Form2: TForm2
     Height = 21
     FileList = FileListBox1
     Filter = 
-      'Bitmapy i pliki JPEG|*.bmp; *.jpg; *.jpeg|Bitmapy|*.bmp|Pliki JP' +
-      'EG|*.jpg; *.jpeg|Pliki TIFF|*.tiff|Wszystkie pliki|*.*'
+      'Wszystkie pliki|*.*|Bitmapy i pliki JPEG|*.bmp; *.jpg; *.jpeg|Bi' +
+      'tmapy|*.bmp|Pliki JPEG|*.jpg; *.jpeg'
     TabOrder = 2
   end
   object FileListBox1: TFileListBox
@@ -49,6 +49,7 @@ object Form2: TForm2
     Height = 198
     ItemHeight = 13
     TabOrder = 3
+    OnClick = FileListBox1Click
   end
   object Timer1: TTimer
     Interval = 1
