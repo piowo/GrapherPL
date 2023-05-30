@@ -14,7 +14,7 @@ type
     Plik1: TMenuItem;
     Obraz1: TMenuItem;
     PokaManagerObrazw1: TMenuItem;
-    PokaManagerObrazw2: TMenuItem;
+    Zamknij1: TMenuItem;
     N1: TMenuItem;
     Rozciagnij1: TMenuItem;
     Proporcja1: TMenuItem;
@@ -33,8 +33,7 @@ type
     procedure Nastpny1Click(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure PokaManagerObrazw1Click(Sender: TObject);
-    procedure PokaManagerObrazw2Click(Sender: TObject);
-    procedure FormShow(Sender: TObject);
+    procedure Zamknij1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,6 +62,7 @@ begin
     Rozciagnij1.Checked := INI.ReadBool('Image1','Stretch',False);
     Proporcja1.Checked := INI.ReadBool('Image1','Proportional',False);
     Wycentruj1.Checked := INI.ReadBool('Image1','Center',True);
+
   finally
     FreeAndNil(INI);
   end;
@@ -70,6 +70,7 @@ begin
   Image1.Stretch := Rozciagnij1.Checked;
   Image1.Proportional := Proporcja1.Checked;
   Image1.Center := Wycentruj1.Checked;
+
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -94,11 +95,6 @@ begin
     VK_UP:
       Poprzedni.Click;
   end;
-end;
-
-procedure TForm1.FormShow(Sender: TObject);
-begin
-  Form2.Show;
 end;
 
 procedure TForm1.Nastpny1Click(Sender: TObject);
@@ -141,7 +137,7 @@ begin
   Form2.Show;
 end;
 
-procedure TForm1.PokaManagerObrazw2Click(Sender: TObject);
+procedure TForm1.Zamknij1Click(Sender: TObject);
 begin
   Application.Terminate;
 end;

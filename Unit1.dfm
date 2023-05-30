@@ -18,7 +18,6 @@ object Form1: TForm1
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -45,10 +44,10 @@ object Form1: TForm1
       object N1: TMenuItem
         Caption = '-'
       end
-      object PokaManagerObrazw2: TMenuItem
+      object Zamknij1: TMenuItem
         Caption = 'Zamknij'
         ShortCut = 32883
-        OnClick = PokaManagerObrazw2Click
+        OnClick = Zamknij1Click
       end
     end
     object Obraz1: TMenuItem
