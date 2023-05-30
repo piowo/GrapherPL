@@ -12,10 +12,13 @@ object Form1: TForm1
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
+  PopupMenu = PopupMenu1
   Position = poDesigned
   Visible = True
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -37,6 +40,7 @@ object Form1: TForm1
       object PokaManagerObrazw1: TMenuItem
         Caption = 'Poka'#380' Manager Obraz'#243'w'
         ShortCut = 16467
+        OnClick = PokaManagerObrazw1Click
       end
       object N1: TMenuItem
         Caption = '-'
@@ -44,6 +48,7 @@ object Form1: TForm1
       object PokaManagerObrazw2: TMenuItem
         Caption = 'Zamknij'
         ShortCut = 32883
+        OnClick = PokaManagerObrazw2Click
       end
     end
     object Plik2: TMenuItem
@@ -71,15 +76,18 @@ object Form1: TForm1
     Top = 24
     object PenyEkran1: TMenuItem
       Caption = 'Pe'#322'ny Ekran'
+      OnClick = PenyEkran1Click
     end
     object N2: TMenuItem
       Caption = '-'
     end
-    object PenyEkran2: TMenuItem
+    object Poprzedni: TMenuItem
       Caption = 'Poprzedni'
+      OnClick = PoprzedniClick
     end
     object Nastpny1: TMenuItem
       Caption = 'Nast'#281'pny'
+      OnClick = Nastpny1Click
     end
   end
 end

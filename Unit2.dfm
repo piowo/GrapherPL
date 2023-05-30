@@ -39,7 +39,8 @@ object Form2: TForm2
     FileList = FileListBox1
     Filter = 
       'Wszystkie pliki|*.*|Bitmapy i pliki JPEG|*.bmp; *.jpg; *.jpeg|Bi' +
-      'tmapy|*.bmp|Pliki JPEG|*.jpg; *.jpeg'
+      'tmapy|*.bmp|Pliki JPEG|*.jpg; *.jpeg|Pliki PNG|*.png|Pliki Gif|*' +
+      '.gif'
     TabOrder = 2
   end
   object FileListBox1: TFileListBox

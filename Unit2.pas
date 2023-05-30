@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.FileCtrl, Vcl.StdCtrls,
-  Unit1, Vcl.Imaging.jpeg;
+  Vcl.Imaging.jpeg, Vcl.Imaging.GIFImg, Vcl.Imaging.GIFConsts,
+  Vcl.Imaging.pngimage, Vcl.Imaging.pnglang;
 
 type
   TForm2 = class(TForm)
@@ -27,6 +28,7 @@ var
 
 implementation
 
+uses Unit1;
 {$R *.dfm}
 
 procedure TForm2.FileListBox1Click(Sender: TObject);

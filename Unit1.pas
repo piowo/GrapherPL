@@ -20,7 +20,7 @@ type
     Proporcja1: TMenuItem;
     Wycentruj1: TMenuItem;
     PenyEkran1: TMenuItem;
-    PenyEkran2: TMenuItem;
+    Poprzedni: TMenuItem;
     N2: TMenuItem;
     Nastpny1: TMenuItem;
     procedure FormCreate(Sender: TObject);
@@ -28,6 +28,13 @@ type
     procedure Rozciagnij1Click(Sender: TObject);
     procedure Proporcja1Click(Sender: TObject);
     procedure Wycentruj1Click(Sender: TObject);
+    procedure PenyEkran1Click(Sender: TObject);
+    procedure PoprzedniClick(Sender: TObject);
+    procedure Nastpny1Click(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure PokaManagerObrazw1Click(Sender: TObject);
+    procedure PokaManagerObrazw2Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,8 +45,11 @@ var
   Form1: TForm1;
   INI: TIniFile;
   CurDir: String;
+  CurWidth, CurHeight, CurLeft, CurTop : Integer;
 
 implementation
+
+uses Unit2;
 
 {$R *.dfm}
 
@@ -71,6 +81,79 @@ begin
     INI.WriteBool('Image1','Center',Wycentruj1.Checked);
   finally
     INI.Free;
+  end;
+end;
+
+
+procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  case Key of
+    VK_DOWN:
+      Nastpny1.Click;
+    VK_UP:
+      Poprzedni.Click;
+  end;
+end;
+
+procedure TForm1.FormShow(Sender: TObject);
+begin
+  Form2.Show;
+end;
+
+procedure TForm1.Nastpny1Click(Sender: TObject);
+begin
+  try
+    Form2.FileListBox1.ItemIndex := Form2.FileListBox1.ItemIndex+1;
+    Form2.FileListBox1.OnClick(Self);
+  except
+  end;
+end;
+
+procedure TForm1.PenyEkran1Click(Sender: TObject);
+begin
+  PenyEkran1.Checked := not PenyEkran1.Checked;
+
+  if PenyEkran1.Checked then
+    begin
+     CurWidth := Form1.Width;
+     CurHeight := Form1.Height;
+     CurLeft := Form1.Left;
+     CurTop := Form1.Top;
+     Plik1.Visible := False;
+     Form1.WindowState := wsMaximized;
+     Form1.BorderStyle := bsNone;
+    end
+    else begin
+     Plik1.Visible := True;
+     Form1.WindowState := wsNormal;
+     Form1.BorderStyle := bsSizeable;
+     Form1.Width := CurWidth;
+     Form1.Height := CurHeight;
+     Form1.Left := CurLeft;
+     Form1.Top := CurTop;
+    end;
+
+end;
+
+procedure TForm1.PokaManagerObrazw1Click(Sender: TObject);
+begin
+  Form2.Show;
+end;
+
+procedure TForm1.PokaManagerObrazw2Click(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+procedure TForm1.PoprzedniClick(Sender: TObject);
+begin
+  try
+    Form2.FileListBox1.ItemIndex:=Form2.FileListBox1.ItemIndex-1;
+    if Form2.FileListBox1.ItemIndex < 0 then Form2.FileListBox1.ItemIndex := 0;
+    Form2.FileListBox1.OnClick(Self);
+  except
+
   end;
 end;
 
